@@ -1,0 +1,14 @@
+{
+  "session_id": "ai-1775578374-4986",
+  "ccb_project_id": "5df24a7fb36fe9045e7a493e1603b35943ced31cef4f06db7f8ce2c779dd0eec",
+  "work_dir": "/home/riona/code/test_ccb_superpower22",
+  "work_dir_norm": "/home/riona/code/test_ccb_superpower22",
+  "start_dir": "/home/riona/code/test_ccb_superpower22",
+  "terminal": "tmux",
+  "active": false,
+  "started_at": "2026-04-08 00:12:54",
+  "updated_at": "2026-04-08 00:12:54",
+  "pane_id": "%0",
+  "pane_title_marker": "CCB-Claude-5df24a7f",
+  "ended_at": "2026-04-08 00:21:03"
+}

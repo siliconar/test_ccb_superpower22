@@ -1,0 +1,16 @@
+{
+  "session_id": "ai-1775578374-4986",
+  "ccb_project_id": "5df24a7fb36fe9045e7a493e1603b35943ced31cef4f06db7f8ce2c779dd0eec",
+  "runtime_dir": "/tmp/claude-ai-riona/ai-1775578374-4986/gemini",
+  "terminal": "tmux",
+  "tmux_session": null,
+  "pane_id": "%4",
+  "pane_title_marker": "CCB-Gemini-5df24a7f",
+  "work_dir": "/home/riona/code/test_ccb_superpower22",
+  "work_dir_norm": "/home/riona/code/test_ccb_superpower22",
+  "start_dir": "/home/riona/code/test_ccb_superpower22",
+  "active": false,
+  "started_at": "2026-04-08 00:12:55",
+  "start_cmd": "export CCB_MANAGED=1; export CCB_PARENT_PID=4986; export CCB_RUN_DIR=/home/riona/.cache/ccb/projects/5df24a7fb36fe904; export CCB_CALLER=gemini; export PATH=/home/riona/claude_code_bridge/bin:/usr/local/cuda/bin:/usr/lib/wsl/lib:/home/riona/miniconda3/bin:/home/riona/miniconda3/condabin:/usr/local/cuda/bin:/usr/lib/wsl/lib:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/snap/bin:/usr/src/tensorrt/bin:/home/riona/n/bin:/usr/src/tensorrt/bin; gemini",
+  "ended_at": "2026-04-08 00:21:03"
+}
