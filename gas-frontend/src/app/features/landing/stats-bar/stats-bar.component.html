@@ -1,0 +1,23 @@
+<section class="bg-slate-900 border-y border-slate-800 py-12 px-6">
+  <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+    @for (item of statItems(); track item.label) {
+      <div data-stat class="text-center transition-all duration-700"
+           [class.opacity-100]="animated()"
+           [class.opacity-0]="!animated()">
+        <div class="text-3xl md:text-4xl font-extrabold text-slate-100 mb-1">
+          {{ item.value }}
+        </div>
+        <div class="text-sm font-semibold text-blue-400 mb-0.5">{{ item.label }}</div>
+        <div class="text-xs text-slate-500">{{ item.description }}</div>
+      </div>
+    }
+    @if (!stats) {
+      @for (i of [1, 2, 3, 4]; track i) {
+        <div data-stat class="text-center">
+          <div class="h-10 bg-slate-800 rounded animate-pulse mb-2"></div>
+          <div class="h-4 bg-slate-800 rounded animate-pulse w-3/4 mx-auto"></div>
+        </div>
+      }
+    }
+  </div>
+</section>
