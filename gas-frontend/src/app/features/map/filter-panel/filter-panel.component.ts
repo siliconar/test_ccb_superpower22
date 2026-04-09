@@ -36,21 +36,23 @@ export class FilterPanelComponent {
     this.selectedGasTypes.set(set);
   }
 
+  private static readonly FLUX_MAX = 10000;
+
   applyFilter(): void {
     this.filterChange.emit({
       ...DEFAULT_FILTER,
       gasTypes: [...this.selectedGasTypes()],
       dateRange: { start: this.dateFrom(), end: this.dateTo() },
-      fluxRateRange: { min: this.fluxMin(), max: 100000 },
+      fluxRateRange: { min: this.fluxMin(), max: FilterPanelComponent.FLUX_MAX },
     });
     this.expanded.set(false);
   }
 
-  onInputValue(event: Event): string {
+  protected onInputValue(event: Event): string {
     return (event.target as HTMLInputElement).value;
   }
 
-  onInputNumber(event: Event): number {
+  protected onInputNumber(event: Event): number {
     return +(event.target as HTMLInputElement).value;
   }
 
@@ -60,5 +62,6 @@ export class FilterPanelComponent {
     this.dateTo.set('');
     this.fluxMin.set(0);
     this.filterChange.emit({ ...DEFAULT_FILTER });
+    this.expanded.set(false);
   }
 }
