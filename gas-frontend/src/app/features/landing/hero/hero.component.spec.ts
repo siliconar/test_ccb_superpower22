@@ -21,8 +21,7 @@ describe('HeroComponent', () => {
     const fixture = TestBed.createComponent(HeroComponent);
     fixture.detectChanges();
     const el = fixture.nativeElement as HTMLElement;
-    const links = Array.from(el.querySelectorAll('a'));
-    const mapLink = links.find(l => l.getAttribute('href') === '/map' || l.getAttribute('ng-reflect-router-link') === '/map');
+    const mapLink = el.querySelector('a[routerLink="/map"]') ?? el.querySelector('a[href="/map"]');
     expect(mapLink).toBeTruthy();
   });
 });

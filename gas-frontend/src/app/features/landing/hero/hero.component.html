@@ -2,7 +2,7 @@
   <!-- Particle background -->
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
        style="background: radial-gradient(ellipse at 50% 50%, #0f2044 0%, #0f172a 70%);">
-    @for (p of particles; track p.left) {
+    @for (p of particles; track $index) {
       <span class="particle"
             [style.left]="p.left"
             [style.top]="p.top"
