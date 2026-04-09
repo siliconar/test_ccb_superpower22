@@ -1,0 +1,22 @@
+<!-- Nav Bar -->
+<nav class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur border-b border-slate-800 px-6 py-4 flex items-center justify-between">
+  <span class="text-xl font-bold text-slate-100 tracking-tight">GasWatch</span>
+  <a routerLink="/map"
+     class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">
+    Open Map →
+  </a>
+</nav>
+
+<!-- Page Sections -->
+<app-hero />
+<app-stats-bar />
+<app-gas-types />
+<app-latest-detections />
+<app-about />
+
+<!-- Footer -->
+<footer class="bg-slate-900 border-t border-slate-800 px-6 py-8 text-center text-slate-500 text-sm">
+  <p class="font-semibold text-slate-300 mb-1">GasWatch</p>
+  <p>Satellite-detected greenhouse gas emissions · Data sourced from SITP / Chinese Academy of Sciences</p>
+  <p class="mt-2">© {{ currentYear }}</p>
+</footer>
