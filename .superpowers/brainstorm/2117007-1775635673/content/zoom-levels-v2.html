@@ -1,0 +1,80 @@
+<h2>Map Visualization — Revised Behavior</h2>
+<p class="subtitle">Confirming the updated interaction model. Does this match your vision?</p>
+
+<div class="section">
+  <h3>Cluster behavior</h3>
+  <div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap">
+    <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:12px;flex:1;min-width:180px">
+      <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">Proximity-based (not zoom-based)</div>
+      <div style="display:flex;gap:10px;align-items:center;justify-content:center;padding:12px 0">
+        <!-- Large cluster -->
+        <div style="width:52px;height:52px;border-radius:50%;background:#1d4ed8;border:3px solid #3b82f6;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;box-shadow:0 0 16px #3b82f644">24</div>
+        <!-- Medium cluster -->
+        <div style="width:38px;height:38px;border-radius:50%;background:#b45309;border:2px solid #f59e0b;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12px;box-shadow:0 0 12px #f59e0b44">8</div>
+        <!-- Isolated marker -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+          <div style="width:12px;height:12px;border-radius:50%;background:#fb923c;box-shadow:0 0 10px #fb923c,0 0 20px #fb923c66"></div>
+          <div style="font-size:9px;color:#64748b">isolated</div>
+        </div>
+      </div>
+      <div style="font-size:10px;color:#64748b;text-align:center">Size ∝ count &nbsp;·&nbsp; Color = dominant gas</div>
+    </div>
+    <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:12px;flex:1;min-width:180px">
+      <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">Click cluster → zoom in + split</div>
+      <div style="display:flex;gap:6px;align-items:center;justify-content:center;padding:8px 0">
+        <div style="width:44px;height:44px;border-radius:50%;background:#1d4ed8;border:2px solid #3b82f6;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px">24</div>
+        <div style="color:#334155;font-size:18px">→</div>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <div style="width:30px;height:30px;border-radius:50%;background:#1d4ed8;border:2px solid #3b82f6;display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px">12</div>
+          <div style="width:24px;height:24px;border-radius:50%;background:#b45309;border:2px solid #f59e0b;display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px">7</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <div style="width:20px;height:20px;border-radius:50%;background:#1d4ed8;border:1px solid #3b82f6;display:flex;align-items:center;justify-content:center;color:#fff;font-size:8px">5</div>
+          <div style="width:10px;height:10px;border-radius:50%;background:#fb923c;box-shadow:0 0 8px #fb923c"></div>
+        </div>
+      </div>
+      <div style="font-size:10px;color:#64748b;text-align:center">Map centers + zooms in, cluster splits</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Individual marker → click → plume</h3>
+  <div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap">
+    <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:12px;flex:1;min-width:160px;text-align:center">
+      <div style="font-size:11px;color:#64748b;margin-bottom:10px">Isolated dot marker</div>
+      <div style="width:14px;height:14px;border-radius:50%;background:#fb923c;box-shadow:0 0 12px #fb923c,0 0 24px #fb923c55;margin:16px auto"></div>
+      <div style="font-size:10px;color:#64748b">Glowing dot<br>click to expand plume</div>
+    </div>
+    <div style="color:#334155;font-size:20px;align-self:center">→</div>
+    <div style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:12px;flex:2;min-width:200px">
+      <div style="font-size:11px;color:#64748b;margin-bottom:8px">Plume polygon + heatmap overlay</div>
+      <div style="position:relative;height:90px;background:#0c1a2e;border-radius:6px;overflow:hidden">
+        <!-- Plume polygon outline -->
+        <svg viewBox="0 0 200 90" style="position:absolute;inset:0;width:100%;height:100%">
+          <polygon points="100,15 130,25 150,45 140,70 110,78 80,72 60,50 70,25" fill="rgba(251,146,60,0.15)" stroke="#fb923c" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <!-- Heatmap blobs -->
+          <radialGradient id="h1" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ef4444" stop-opacity="0.7"/>
+            <stop offset="60%" stop-color="#f59e0b" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#fb923c" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="h2" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#fb923c" stop-opacity="0"/>
+          </radialGradient>
+          <ellipse cx="105" cy="45" rx="28" ry="22" fill="url(#h1)"/>
+          <ellipse cx="88" cy="38" rx="16" ry="12" fill="url(#h2)"/>
+          <!-- Hover tooltip indicator -->
+          <circle cx="115" cy="40" r="3" fill="#fff" opacity="0.8"/>
+          <rect x="120" y="28" width="60" height="22" rx="3" fill="#1e293b" opacity="0.95"/>
+          <text x="125" y="39" font-size="7" fill="#94a3b8">CH4: 1,423 kg/h</text>
+          <text x="125" y="47" font-size="7" fill="#64748b">hover for values</text>
+        </svg>
+      </div>
+      <div style="font-size:10px;color:#64748b;margin-top:6px">Polygon outline from TIFF geometry · heatmap fill · hover = value tooltip</div>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle">Cluster/marker split is proximity-based (not zoom-based). Clicking a cluster zooms in and splits it. Clicking an isolated marker reveals the plume polygon + heatmap with hover tooltips. Correct?</p>

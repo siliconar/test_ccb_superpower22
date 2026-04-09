@@ -1,0 +1,90 @@
+<h2>Map Data Visualization — Zoom Levels</h2>
+<p class="subtitle">How should emission data appear as the user zooms in and out?</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Cluster → Marker → Plume Outline</h3>
+      <p>3-level progressive disclosure:</p>
+      <ul style="font-size:12px;line-height:1.8;margin:6px 0 0 16px;color:#94a3b8">
+        <li><strong style="color:#e2e8f0">Zoom 1–5 (global)</strong> — clustered circles with count badge, colored by dominant gas type</li>
+        <li><strong style="color:#e2e8f0">Zoom 6–11 (regional)</strong> — individual dot markers, sized by emission rate</li>
+        <li><strong style="color:#e2e8f0">Zoom 12+ (local)</strong> — actual plume polygon outline rendered from TIFF geometry</li>
+      </ul>
+      <div class="mockup" style="margin-top:10px">
+        <div class="mockup-header">Zoom progression</div>
+        <div class="mockup-body" style="display:flex;gap:8px;align-items:center;font-size:11px">
+          <div style="text-align:center">
+            <div style="width:44px;height:44px;border-radius:50%;background:#1d4ed8;border:2px solid #3b82f6;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;margin:0 auto">47</div>
+            <div style="color:#64748b;margin-top:4px">Global</div>
+          </div>
+          <div style="color:#334155;font-size:16px">→</div>
+          <div style="text-align:center">
+            <div style="display:flex;gap:4px;align-items:flex-end">
+              <div style="width:14px;height:14px;border-radius:50%;background:#fb923c;box-shadow:0 0 8px #fb923c88"></div>
+              <div style="width:10px;height:10px;border-radius:50%;background:#f87171;box-shadow:0 0 6px #f8717188"></div>
+              <div style="width:8px;height:8px;border-radius:50%;background:#818cf8;box-shadow:0 0 5px #818cf888"></div>
+            </div>
+            <div style="color:#64748b;margin-top:4px">Regional</div>
+          </div>
+          <div style="color:#334155;font-size:16px">→</div>
+          <div style="text-align:center">
+            <div style="width:50px;height:36px;border:2px solid #fb923c;border-radius:4px;background:#fb923c22;position:relative">
+              <div style="position:absolute;inset:4px;border:1px dashed #fb923c66;border-radius:2px"></div>
+            </div>
+            <div style="color:#64748b;margin-top:4px">Local</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Heatmap → Marker → Plume Outline</h3>
+      <p>3-level with heatmap at global scale:</p>
+      <ul style="font-size:12px;line-height:1.8;margin:6px 0 0 16px;color:#94a3b8">
+        <li><strong style="color:#e2e8f0">Zoom 1–5 (global)</strong> — density heatmap layer, intensity = emission rate</li>
+        <li><strong style="color:#e2e8f0">Zoom 6–11 (regional)</strong> — individual dot markers, sized by emission rate</li>
+        <li><strong style="color:#e2e8f0">Zoom 12+ (local)</strong> — plume polygon outline from geometry</li>
+      </ul>
+      <div class="mockup" style="margin-top:10px">
+        <div class="mockup-header">Zoom progression</div>
+        <div class="mockup-body" style="display:flex;gap:8px;align-items:center;font-size:11px">
+          <div style="text-align:center">
+            <div style="width:60px;height:36px;background:radial-gradient(ellipse,#ef444488 0%,#f59e0b44 40%,transparent 70%),radial-gradient(ellipse at 70% 60%,#ef444466 0%,transparent 50%);border-radius:4px"></div>
+            <div style="color:#64748b;margin-top:4px">Global</div>
+          </div>
+          <div style="color:#334155;font-size:16px">→</div>
+          <div style="text-align:center">
+            <div style="display:flex;gap:4px;align-items:flex-end">
+              <div style="width:14px;height:14px;border-radius:50%;background:#fb923c;box-shadow:0 0 8px #fb923c88"></div>
+              <div style="width:10px;height:10px;border-radius:50%;background:#f87171"></div>
+              <div style="width:8px;height:8px;border-radius:50%;background:#818cf8"></div>
+            </div>
+            <div style="color:#64748b;margin-top:4px">Regional</div>
+          </div>
+          <div style="color:#334155;font-size:16px">→</div>
+          <div style="text-align:center">
+            <div style="width:50px;height:36px;border:2px solid #fb923c;border-radius:4px;background:#fb923c22"></div>
+            <div style="color:#64748b;margin-top:4px">Local</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Cluster → Marker only (no plume outline for now)</h3>
+      <p>Simpler 2-level approach — skip plume polygon rendering in the first version. Focus on getting the data and filters right first; plume outlines can be added later.</p>
+      <ul style="font-size:12px;line-height:1.8;margin:6px 0 0 16px;color:#94a3b8">
+        <li><strong style="color:#e2e8f0">Zoom 1–8</strong> — clustered circles with count</li>
+        <li><strong style="color:#e2e8f0">Zoom 9+</strong> — individual markers, click for detail</li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,3 @@
+ "继续 GasWatch 项目。设计文档在
+    docs/superpowers/specs/2026-04-08-gaswatch-design.md，CLAUDE.md
+    规范在根目录。当前状态：设计已完成，需要写实现计划然后委派 Gemini 实现前端。

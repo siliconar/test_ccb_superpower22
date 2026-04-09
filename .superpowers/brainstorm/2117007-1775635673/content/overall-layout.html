@@ -1,0 +1,72 @@
+<h2>Overall Site Structure</h2>
+<p class="subtitle">How should the public landing page and map page relate to each other?</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Separate Pages — Full Landing + Map App</h3>
+      <p>A rich public homepage (hero, stats, about, CTA) that links to a dedicated full-screen map application at <code>/map</code>. The map page has its own top bar with filters and controls.</p>
+      <div class="mockup" style="margin-top:12px">
+        <div class="mockup-header">Site structure</div>
+        <div class="mockup-body" style="font-size:12px;line-height:1.8">
+          <div class="mock-nav" style="font-size:11px">🌍 GasWatch &nbsp;|&nbsp; Home &nbsp;|&nbsp; About &nbsp;|&nbsp; <strong>Open Map →</strong></div>
+          <div style="background:#1a2744;color:#7dd3fc;padding:16px;text-align:center;margin:4px 0;border-radius:4px">
+            Hero: "Monitoring Global Methane Emissions"<br>
+            <span style="font-size:11px;opacity:0.7">Stats · Gas types · CTA button</span>
+          </div>
+          <div style="display:flex;gap:4px;margin:4px 0">
+            <div style="flex:1;background:#0f172a;color:#94a3b8;padding:8px;border-radius:4px;font-size:11px;text-align:center">About section</div>
+            <div style="flex:1;background:#0f172a;color:#94a3b8;padding:8px;border-radius:4px;font-size:11px;text-align:center">Data sources</div>
+            <div style="flex:1;background:#0f172a;color:#94a3b8;padding:8px;border-radius:4px;font-size:11px;text-align:center">Latest detections</div>
+          </div>
+          <div style="background:#064e3b;color:#6ee7b7;padding:8px;border-radius:4px;font-size:11px;text-align:center">↓ /map — Full-screen MapLibre + filter sidebar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Map-First — Minimal Header + Collapsible Info Panel</h3>
+      <p>The map is the primary experience from the start. A slim top bar holds branding and nav. A collapsible side panel shows "About / Stats". Filters live in a floating panel over the map.</p>
+      <div class="mockup" style="margin-top:12px">
+        <div class="mockup-header">Site structure</div>
+        <div class="mockup-body" style="font-size:12px;line-height:1.8">
+          <div class="mock-nav" style="font-size:11px">🌍 GasWatch &nbsp;|&nbsp; [About ▼] &nbsp;|&nbsp; [Filters ▼]</div>
+          <div style="display:flex;gap:4px;height:80px">
+            <div style="width:180px;background:#1e293b;color:#94a3b8;padding:8px;border-radius:4px;font-size:11px">
+              ← Collapsible panel<br>Stats / About / Legend
+            </div>
+            <div style="flex:1;background:#0c1a2e;color:#38bdf8;padding:8px;border-radius:4px;font-size:11px;text-align:center">
+              Full-screen map<br>
+              <span style="font-size:10px;opacity:0.6">Floating filter toolbar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Hybrid — Landing Scrolls Into Map</h3>
+      <p>A short landing section (hero + key stats) at the top of the page, with the map embedded below the fold. Scrolling down reveals the map. Filters appear as a top bar when the map is in view.</p>
+      <div class="mockup" style="margin-top:12px">
+        <div class="mockup-header">Site structure</div>
+        <div class="mockup-body" style="font-size:12px;line-height:1.8">
+          <div class="mock-nav" style="font-size:11px">🌍 GasWatch &nbsp;|&nbsp; Home &nbsp;|&nbsp; About</div>
+          <div style="background:#1a2744;color:#7dd3fc;padding:10px;text-align:center;border-radius:4px;font-size:11px">
+            Hero + stats (short section)
+          </div>
+          <div style="background:#0c1a2e;color:#38bdf8;padding:16px;text-align:center;border-radius:4px;margin-top:4px;font-size:11px">
+            ↓ Scroll → Full-screen embedded map<br>
+            <span style="opacity:0.6">Sticky filter bar appears on scroll</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

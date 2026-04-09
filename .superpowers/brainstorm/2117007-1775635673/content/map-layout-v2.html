@@ -1,0 +1,104 @@
+<h2>Map Page Layout — Refined</h2>
+<p class="subtitle">Floating filter (top-left, collapsible) + floating detail drawer (right). Does this match your vision?</p>
+
+<div class="mockup">
+  <div class="mockup-header">Map page — Collapsed filter state (default)</div>
+  <div class="mockup-body" style="position:relative;height:200px;background:#0c1a2e;border-radius:6px;overflow:hidden">
+    <!-- Map background -->
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0c1a2e 0%,#0f2a1e 100%);opacity:0.9"></div>
+    <!-- Fake map dots -->
+    <div style="position:absolute;top:80px;left:200px;width:8px;height:8px;background:#f59e0b;border-radius:50%;box-shadow:0 0 8px #f59e0b"></div>
+    <div style="position:absolute;top:110px;left:300px;width:6px;height:6px;background:#ef4444;border-radius:50%;box-shadow:0 0 6px #ef4444"></div>
+    <div style="position:absolute;top:60px;left:380px;width:10px;height:10px;background:#f59e0b;border-radius:50%;box-shadow:0 0 10px #f59e0b"></div>
+    <div style="position:absolute;top:140px;left:250px;width:5px;height:5px;background:#a78bfa;border-radius:50%;box-shadow:0 0 6px #a78bfa"></div>
+
+    <!-- Top nav bar -->
+    <div style="position:absolute;top:0;left:0;right:0;height:32px;background:#111827cc;border-bottom:1px solid #ffffff15;display:flex;align-items:center;padding:0 12px;gap:16px;font-size:11px;color:#94a3b8">
+      <span style="color:#38bdf8;font-weight:600">🌍 GasWatch</span>
+      <span>← Home</span>
+      <span style="margin-left:auto;font-size:10px;color:#64748b">MapLibre GL</span>
+    </div>
+
+    <!-- Collapsed filter pill (top-left) -->
+    <div style="position:absolute;top:44px;left:12px;background:#1e293bdd;border:1px solid #334155;border-radius:8px;padding:6px 12px;font-size:11px;color:#e2e8f0;display:flex;align-items:center;gap:6px;backdrop-filter:blur(4px)">
+      <span>⚙ Filters</span>
+      <span style="background:#3b82f6;color:#fff;border-radius:4px;padding:1px 6px;font-size:10px">3 active</span>
+      <span style="color:#64748b">▼</span>
+    </div>
+
+    <!-- Map attribution bottom -->
+    <div style="position:absolute;bottom:4px;right:8px;font-size:9px;color:#334155">© OpenMapTiles</div>
+  </div>
+</div>
+
+<div style="height:16px"></div>
+
+<div class="mockup">
+  <div class="mockup-header">Filter expanded (click on pill) + Detail drawer open (click on plume)</div>
+  <div class="mockup-body" style="position:relative;height:240px;background:#0c1a2e;border-radius:6px;overflow:hidden">
+    <!-- Map background -->
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0c1a2e 0%,#0f2a1e 100%)"></div>
+    <!-- Fake map dots -->
+    <div style="position:absolute;top:100px;left:220px;width:8px;height:8px;background:#f59e0b;border-radius:50%;box-shadow:0 0 8px #f59e0b"></div>
+    <div style="position:absolute;top:130px;left:300px;width:6px;height:6px;background:#ef4444;border-radius:50%;box-shadow:0 0 6px #ef4444;border:2px solid #fff"></div>
+    <div style="position:absolute;top:80px;left:350px;width:10px;height:10px;background:#f59e0b;border-radius:50%;box-shadow:0 0 10px #f59e0b"></div>
+
+    <!-- Top nav bar -->
+    <div style="position:absolute;top:0;left:0;right:0;height:32px;background:#111827cc;border-bottom:1px solid #ffffff15;display:flex;align-items:center;padding:0 12px;font-size:11px;color:#94a3b8">
+      <span style="color:#38bdf8;font-weight:600">🌍 GasWatch</span>
+    </div>
+
+    <!-- Expanded filter panel (top-left, floating) -->
+    <div style="position:absolute;top:44px;left:12px;background:#1e293bee;border:1px solid #334155;border-radius:10px;padding:12px;font-size:11px;color:#e2e8f0;width:180px;backdrop-filter:blur(8px)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <span style="font-weight:600;color:#38bdf8">⚙ Filters</span>
+        <span style="color:#64748b;cursor:pointer">✕</span>
+      </div>
+      <div style="margin-bottom:6px">
+        <div style="font-size:10px;color:#64748b;margin-bottom:3px;text-transform:uppercase;letter-spacing:0.05em">Gas Type</div>
+        <div style="display:flex;gap:4px;flex-wrap:wrap">
+          <span style="background:#1d4ed8;padding:2px 6px;border-radius:4px;font-size:10px">CH4 ✓</span>
+          <span style="background:#374151;padding:2px 6px;border-radius:4px;font-size:10px">CO</span>
+          <span style="background:#374151;padding:2px 6px;border-radius:4px;font-size:10px">NO2</span>
+        </div>
+      </div>
+      <div style="margin-bottom:6px">
+        <div style="font-size:10px;color:#64748b;margin-bottom:3px;text-transform:uppercase;letter-spacing:0.05em">Satellite</div>
+        <div style="background:#374151;padding:3px 8px;border-radius:4px;font-size:10px">GAOFEN-5 ▼</div>
+      </div>
+      <div style="margin-bottom:8px">
+        <div style="font-size:10px;color:#64748b;margin-bottom:3px;text-transform:uppercase;letter-spacing:0.05em">Date Range</div>
+        <div style="display:flex;gap:4px;font-size:10px">
+          <div style="background:#374151;padding:2px 6px;border-radius:4px">2023-01</div>
+          <span>→</span>
+          <div style="background:#374151;padding:2px 6px;border-radius:4px">2025-12</div>
+        </div>
+      </div>
+      <button style="width:100%;background:#3b82f6;color:#fff;border:none;border-radius:6px;padding:4px;font-size:10px;cursor:pointer">Apply Filters</button>
+    </div>
+
+    <!-- Right floating detail drawer -->
+    <div style="position:absolute;top:44px;right:0;bottom:0;width:200px;background:#1e293bee;border-left:1px solid #334155;backdrop-filter:blur(8px);padding:12px;font-size:11px;color:#e2e8f0">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <span style="font-weight:600;color:#38bdf8;font-size:12px">Plume Detail</span>
+        <span style="color:#64748b;font-size:14px">✕</span>
+      </div>
+      <div style="background:#0f172a;border-radius:6px;padding:6px;margin-bottom:8px;font-size:10px;color:#94a3b8">
+        Plume outline rendered here<br>
+        <span style="opacity:0.5">(TIFF overlay)</span>
+      </div>
+      <div style="font-size:10px;line-height:1.9;color:#cbd5e1">
+        <div><span style="color:#64748b">ID</span> &nbsp; A0000092</div>
+        <div><span style="color:#64748b">Gas</span> &nbsp; <span style="color:#f59e0b">CH4</span></div>
+        <div><span style="color:#64748b">Rate</span> &nbsp; 1423 kg/h</div>
+        <div><span style="color:#64748b">Sat</span> &nbsp; GAOFEN-5-01A</div>
+        <div><span style="color:#64748b">Date</span> &nbsp; 2023-03-19</div>
+        <div><span style="color:#64748b">Sector</span> &nbsp; Oil &amp; Gas</div>
+        <div><span style="color:#64748b">Country</span> &nbsp; USA</div>
+        <div><span style="color:#64748b">Wind</span> &nbsp; 7.6 m/s</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top:16px">Both panels float above the map. Filter collapses to a pill by default. Detail slides in from the right edge on plume click. Does this look right?</p>

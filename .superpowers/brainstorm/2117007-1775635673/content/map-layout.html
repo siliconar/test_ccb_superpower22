@@ -1,0 +1,82 @@
+<h2>Map Page Layout</h2>
+<p class="subtitle">How should the filter panel and detail panel be positioned on the map page?</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Left Sidebar — Filters Always Visible</h3>
+      <p>A fixed left panel (collapsible) holds all filters: gas type, satellite, date range. Clicking a plume opens a detail drawer from the right.</p>
+      <div class="mockup" style="margin-top:10px">
+        <div class="mockup-header">Map page wireframe</div>
+        <div class="mockup-body">
+          <div class="mock-nav" style="font-size:11px">🌍 GasWatch &nbsp;|&nbsp; ← Back to Home &nbsp;|&nbsp; Gas: CH4 ▼ &nbsp; Satellite ▼ &nbsp; Date ▼</div>
+          <div style="display:flex;gap:4px;height:100px">
+            <div style="width:140px;background:#1e293b;color:#94a3b8;padding:8px;border-radius:4px;font-size:11px">
+              <strong>Filters</strong><br>
+              ☑ CH4<br>☑ CO<br>☑ NO2<br>
+              Satellite: All<br>
+              Date: 2023–2025
+            </div>
+            <div style="flex:1;background:#0c1a2e;color:#38bdf8;padding:8px;border-radius:4px;font-size:11px;text-align:center;position:relative">
+              Full map<br>
+              <span style="font-size:10px;opacity:0.6">● plume markers</span>
+            </div>
+            <div style="width:120px;background:#1e293b;color:#94a3b8;padding:8px;border-radius:4px;font-size:11px">
+              <strong>Detail</strong><br>
+              ID: A0000092<br>
+              CH4: 1423 kg/h<br>
+              Sector: Oil&Gas<br>
+              <span style="opacity:0.5">← slides in on click</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Top Filter Bar — Floating Detail Card</h3>
+      <p>Filters live in a compact horizontal bar at the top of the map. Clicking a plume shows a floating popup/card anchored to the marker. No sidebars — maximum map space.</p>
+      <div class="mockup" style="margin-top:10px">
+        <div class="mockup-header">Map page wireframe</div>
+        <div class="mockup-body">
+          <div class="mock-nav" style="font-size:11px">🌍 GasWatch &nbsp;|&nbsp; Gas: [CH4 ✓][CO][NO2] &nbsp;|&nbsp; Satellite: All ▼ &nbsp;|&nbsp; 2023-01 → 2025-12 &nbsp;|&nbsp; [Apply]</div>
+          <div style="flex:1;background:#0c1a2e;color:#38bdf8;padding:8px;border-radius:4px;font-size:11px;text-align:center;height:100px;position:relative">
+            Full map — maximum width<br>
+            <div style="position:absolute;top:20px;right:20px;background:#1e293b;color:#e2e8f0;padding:8px;border-radius:6px;font-size:10px;text-align:left;width:110px">
+              <strong>A0000092</strong><br>
+              CH4 · 1423 kg/h<br>
+              Oil &amp; Gas · TX<br>
+              2023-03-19<br>
+              <span style="color:#38bdf8">View details →</span>
+            </div>
+            <span style="font-size:10px;opacity:0.6">● plume markers</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Bottom Sheet (Mobile-first) + Top Bar</h3>
+      <p>Filters in a top bar. Clicking a plume slides up a bottom sheet with full details. Works great on mobile and tablet; on desktop the bottom sheet becomes a right panel.</p>
+      <div class="mockup" style="margin-top:10px">
+        <div class="mockup-header">Map page wireframe</div>
+        <div class="mockup-body">
+          <div class="mock-nav" style="font-size:11px">🌍 GasWatch &nbsp;|&nbsp; Gas ▼ &nbsp; Satellite ▼ &nbsp; Date ▼ &nbsp; [Reset]</div>
+          <div style="background:#0c1a2e;color:#38bdf8;padding:8px;border-radius:4px;font-size:11px;text-align:center;height:60px">
+            Full map
+          </div>
+          <div style="background:#1e293b;color:#e2e8f0;padding:8px;border-radius:4px;font-size:11px;margin-top:4px">
+            <strong>↑ Detail sheet slides up on click</strong> &nbsp; A0000092 · CH4 1423 kg/h · Oil&amp;Gas · Texas · 2023-03-19
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+参考 @CLAUDE.md
+
+
+项目目标：
+我要制作一个“全球甲烷排放监测网站”类型的产品，支持桌面浏览器、手机浏览器、iPad 浏览器访问。
+核心能力是：
+1. 展示甲烷/一氧化碳/二氧化氮等多种气体排放监测结果。
+2. 地图缩放时支持不同层级的数据表达
+3. 用户可以查看排放点、聚合点、区域图层及详情
+4. 页面包含公开展示页 + 地图业务页.
+5. 地图业务页用户可以使用过滤器，根据卫星型号、日期范围等筛选数据。
+5. 所有页面文字使用英文。
+
+
+技术栈固定：
+- 前端：Angular（最新稳定版，standalone components，zoneless）+ Tailwind CSS + TypeScript
+- 地图：MapLibre GL
+- 后端：Go
+- 数据库：SQLite
+
+
+已准备数据:
+- raw数据: 未入库的气体羽流数据。其中每个文件夹代表一个排放点，其中包含单个检测记录的元数据(*_META.json) + 对应羽流 TIFF 文件(*_PLUME.tif)。
+- 地图瓦片: 已经通过mbtileserver启动，Server address: 'http://localhost:7777', Tileset ID:'vector', format:'pbf'.
+
+
+目前目录说明:
+[root] - 工程根目录
+├── [root]/prompt - 提示词目录
+├── [root]/gas-frontend - 前端项目（已生成 Angular 项目）
+├── [root]/gas-backend - 后端项目（目前空文件夹）
+├── [root]/data/rawdata - 原始数据
+└── [root]/data/mockdata - 仿真数据（空文件夹）
+
+
+
+硬性要求：
+- 不使用 Angular Material
+- 优先使用原生 HTML + Tailwind
+- 代码要可维护、组件化、可扩展,确保模块化开发。
+- 前期先使用 mock data
+- 后期 mock data 要能平滑替换成真实 API
+- 响应式设计必须从一开始就考虑
+
+
+环境部署：
+如果出现未安装的包，可以自行安装，并给出详细的安装步骤，例如：
+```
+## Install Tailwnd css
+npm install tailwindcss @tailwindcss/postcss postcss
+```
+
