@@ -11,7 +11,7 @@ import { FilterPanelComponent } from './filter-panel/filter-panel.component';
 import { DetailDrawerComponent } from './detail-drawer/detail-drawer.component';
 import { PlumeOverlayComponent } from './plume-overlay/plume-overlay.component';
 
-const MBTILES_TILEJSON = 'http://localhost:7777/services/vector/tilejson.json';
+const MBTILES_TILES = 'http://localhost:7777/services/vector/tiles/{z}/{x}/{y}.pbf';
 
 @Component({
   selector: 'app-map',
@@ -88,13 +88,13 @@ export class MapComponent implements OnInit, OnDestroy {
       style: {
         version: 8,
         sources: {
-          basemap: { type: 'vector', url: MBTILES_TILEJSON },
+          basemap: { type: 'vector', tiles: [MBTILES_TILES] },
         },
         layers: this.buildBasemapLayers(),
         glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
       },
       center: [0, 20],
-      zoom: 2,
+      zoom: 0,
     });
 
     this.map.on('load', () => {
@@ -113,10 +113,11 @@ export class MapComponent implements OnInit, OnDestroy {
   private buildBasemapLayers(): maplibregl.LayerSpecification[] {
     return [
       { id: 'background', type: 'background', paint: { 'background-color': '#0f172a' } },
-      { id: 'land', type: 'fill', source: 'basemap', 'source-layer': 'land', paint: { 'fill-color': '#1e293b' } },
-      { id: 'water', type: 'fill', source: 'basemap', 'source-layer': 'water', paint: { 'fill-color': '#0f172a' } },
-      { id: 'boundaries', type: 'line', source: 'basemap', 'source-layer': 'boundaries', paint: { 'line-color': '#334155', 'line-width': 0.5 } },
-      { id: 'roads', type: 'line', source: 'basemap', 'source-layer': 'roads', paint: { 'line-color': '#1e3a5f', 'line-width': 0.5 } },
+      { id: 'landcover', type: 'fill', source: 'basemap', 'source-layer': 'landcover', paint: { 'fill-color': '#1e293b' } },
+      { id: 'landuse', type: 'fill', source: 'basemap', 'source-layer': 'landuse', paint: { 'fill-color': '#1e293b' } },
+      { id: 'water', type: 'fill', source: 'basemap', 'source-layer': 'water', paint: { 'fill-color': '#0c1624' } },
+      { id: 'boundary', type: 'line', source: 'basemap', 'source-layer': 'boundary', paint: { 'line-color': '#334155', 'line-width': 0.5 } },
+      { id: 'transportation', type: 'line', source: 'basemap', 'source-layer': 'transportation', paint: { 'line-color': '#1e3a5f', 'line-width': 0.5 } },
     ];
   }
 
