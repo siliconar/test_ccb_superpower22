@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"strconv"
+	"strings"
 
 	"gaswatch/backend/internal/db"
 	"gaswatch/backend/internal/model"
@@ -134,7 +135,7 @@ func findFile(dir, suffix string) (string, error) {
 		return "", err
 	}
 	for _, e := range entries {
-		if !e.IsDir() && len(e.Name()) >= len(suffix) && e.Name()[len(e.Name())-len(suffix):] == suffix {
+		if !e.IsDir() && strings.HasSuffix(e.Name(), suffix) {
 			return filepath.Join(dir, e.Name()), nil
 		}
 	}

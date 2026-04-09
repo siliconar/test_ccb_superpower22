@@ -67,9 +67,7 @@ func (r *PlumeRepo) List(f model.FilterCriteria) ([]model.Plume, int, error) {
 		plumes = append(plumes, *p)
 	}
 
-	var total int
-	r.db.QueryRow("SELECT COUNT(*) FROM plumes"+where, args...).Scan(&total)
-	return plumes, total, nil
+	return plumes, len(plumes), nil
 }
 
 func (r *PlumeRepo) GetStats() (*model.Stats, error) {
