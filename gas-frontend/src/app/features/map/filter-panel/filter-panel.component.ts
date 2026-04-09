@@ -1,5 +1,5 @@
 import { Component, output } from '@angular/core';
-import { FilterCriteria, DEFAULT_FILTER } from '../../../core/models/plume.model';
+import { FilterCriteria } from '../../../core/models/plume.model';
 
 @Component({
   selector: 'app-filter-panel',

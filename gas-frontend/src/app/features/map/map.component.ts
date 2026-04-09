@@ -30,6 +30,7 @@ export class MapComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
 
   private map?: MapLibreMap;
+  private pendingPlumes: Plume[] | null = null;
 
   readonly loading = signal(true);
   readonly error = signal<string | null>(null);
@@ -97,12 +98,15 @@ export class MapComponent implements OnInit, OnDestroy {
 
     this.map.on('load', () => {
       this.addPlumeSource();
+      if (this.pendingPlumes !== null) {
+        this.updateMapSource(this.pendingPlumes);
+        this.pendingPlumes = null;
+      }
       this.addClusterLayers();
       this.addMarkerLayers();
       this.addMapEventHandlers();
+      this.mapInstance.set(this.map!);
     });
-
-    this.mapInstance.set(this.map);
   }
 
   private buildBasemapLayers(): maplibregl.LayerSpecification[] {
@@ -180,7 +184,7 @@ export class MapComponent implements OnInit, OnDestroy {
       if (!features.length) return;
       const clusterId = features[0].properties?.['cluster_id'];
       (this.map!.getSource('plumes') as GeoJSONSource).getClusterExpansionZoom(clusterId).then((zoom: number) => {
-        if (!zoom) return;
+        if (zoom == null) return;
         this.map!.flyTo({ center: (features[0].geometry as GeoJSON.Point).coordinates as [number, number], zoom });
       }).catch(() => {});
     });
@@ -199,7 +203,12 @@ export class MapComponent implements OnInit, OnDestroy {
 
   private updateMapSource(plumes: Plume[]): void {
     const source = this.map?.getSource('plumes') as GeoJSONSource | undefined;
-    source?.setData(this.plumesToGeoJSON(plumes));
+    if (source) {
+      source.setData(this.plumesToGeoJSON(plumes));
+    } else {
+      // Map source not ready yet — buffer and apply when map loads
+      this.pendingPlumes = plumes;
+    }
   }
 
   private plumesToGeoJSON(plumes: Plume[]): GeoJSON.FeatureCollection {
