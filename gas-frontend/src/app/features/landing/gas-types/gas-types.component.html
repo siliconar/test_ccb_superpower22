@@ -1,0 +1,23 @@
+<section class="py-20 px-6 bg-slate-950">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold text-slate-100 text-center mb-4">Monitored Gas Types</h2>
+    <p class="text-slate-400 text-center mb-12 max-w-xl mx-auto">
+      GasWatch tracks three key atmospheric gases detected by satellite payloads.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      @for (gas of gases; track gas.type) {
+        <div class="bg-slate-900 rounded-2xl border p-6 flex flex-col gap-4 transition-colors"
+             [class]="gas.borderClass">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl font-mono font-bold" [class]="gas.colorClass">{{ gas.formula }}</span>
+            <span class="text-slate-300 font-semibold">{{ gas.name }}</span>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed flex-1">{{ gas.description }}</p>
+          <div class="text-xs text-slate-500 border-t border-slate-800 pt-3">
+            {{ gas.sources }}
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
