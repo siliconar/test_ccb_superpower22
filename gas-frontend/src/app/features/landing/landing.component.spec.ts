@@ -7,9 +7,22 @@ import { PlumeService } from '../../core/services/plume.service';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { MockPlumeService } from '../../core/services/mock-plume.service';
+import { vi } from 'vitest';
 
 describe('LandingComponent', () => {
   let fixture: ComponentFixture<LandingComponent>;
+
+  beforeAll(() => {
+    vi.stubGlobal('IntersectionObserver', class {
+      observe = vi.fn();
+      disconnect = vi.fn();
+      unobserve = vi.fn();
+    });
+  });
+
+  afterAll(() => {
+    vi.unstubAllGlobals();
+  });
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

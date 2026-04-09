@@ -6,6 +6,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { of } from 'rxjs';
 import { Stats } from '../../../core/models/plume.model';
+import { vi } from 'vitest';
 
 const mockStats: Stats = {
   totalDetections: 1234,
@@ -17,17 +18,19 @@ const mockStats: Stats = {
 describe('StatsBarComponent', () => {
   let fixture: ComponentFixture<StatsBarComponent>;
 
-  beforeEach(async () => {
-    // Mock IntersectionObserver for jsdom
-    Object.defineProperty(window, 'IntersectionObserver', {
-      writable: true,
-      value: class {
-        observe = () => {};
-        disconnect = () => {};
-        unobserve = () => {};
-      },
+  beforeAll(() => {
+    vi.stubGlobal('IntersectionObserver', class {
+      observe = vi.fn();
+      disconnect = vi.fn();
+      unobserve = vi.fn();
     });
+  });
 
+  afterAll(() => {
+    vi.unstubAllGlobals();
+  });
+
+  beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [StatsBarComponent],
       providers: [

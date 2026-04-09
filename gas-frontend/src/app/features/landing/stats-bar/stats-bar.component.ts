@@ -18,6 +18,7 @@ interface StatItem {
 }
 
 @Component({
+  standalone: true,
   selector: 'app-stats-bar',
   templateUrl: './stats-bar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
