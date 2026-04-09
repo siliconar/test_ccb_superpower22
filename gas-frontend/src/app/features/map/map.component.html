@@ -36,3 +36,6 @@
 <app-detail-drawer
   [plume]="selectedPlume()"
   (close)="closeDrawer()" />
+
+<!-- Plume overlay (polygon + TIFF heatmap) -->
+<app-plume-overlay [map]="mapInstance()" [plume]="selectedPlume()" />

@@ -9,13 +9,14 @@ import { PlumeService } from '../../core/services/plume.service';
 import { Plume, GAS_COLORS, DEFAULT_FILTER, FilterCriteria } from '../../core/models/plume.model';
 import { FilterPanelComponent } from './filter-panel/filter-panel.component';
 import { DetailDrawerComponent } from './detail-drawer/detail-drawer.component';
+import { PlumeOverlayComponent } from './plume-overlay/plume-overlay.component';
 
 const MBTILES_TILEJSON = 'http://localhost:7777/services/vector/tilejson.json';
 
 @Component({
   selector: 'app-map',
   standalone: true,
-  imports: [RouterLink, FilterPanelComponent, DetailDrawerComponent],
+  imports: [RouterLink, FilterPanelComponent, DetailDrawerComponent, PlumeOverlayComponent],
   templateUrl: './map.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [`
