@@ -3,7 +3,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 import { RouterLink } from '@angular/router';
 import { PlumeService } from '../../../core/services/plume.service';
-import { GAS_COLORS, DEFAULT_FILTER } from '../../../core/models/plume.model';
+import { Plume, GAS_COLORS, DEFAULT_FILTER } from '../../../core/models/plume.model';
 
 @Component({
   selector: 'app-latest-detections',
@@ -22,7 +22,8 @@ export class LatestDetectionsComponent {
           .sort((a, b) => new Date(b.overpassTime).getTime() - new Date(a.overpassTime).getTime())
           .slice(0, 10)
       )
-    )
+    ),
+    { initialValue: [] as Plume[] }
   );
 
   gasColor(gasType: string): string {

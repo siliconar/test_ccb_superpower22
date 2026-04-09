@@ -54,6 +54,7 @@ describe('LatestDetectionsComponent', () => {
       ],
     }).compileComponents();
     fixture = TestBed.createComponent(LatestDetectionsComponent);
+    fixture.detectChanges();
     await fixture.whenStable();
     fixture.detectChanges();
   });
