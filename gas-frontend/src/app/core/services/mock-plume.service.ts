@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable, map, of, throwError } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { DEFAULT_FILTER, FilterCriteria, Plume, Stats } from '../models/plume.model';
 import { PlumeService } from './plume.service';
 

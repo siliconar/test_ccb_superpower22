@@ -28,12 +28,11 @@ describe('LandingComponent', () => {
     await fixture.whenStable();
     fixture.detectChanges();
     const el = fixture.nativeElement as HTMLElement;
-    expect(el.querySelector('nav')).toBeTruthy();
-    expect(el.textContent).toContain('GasWatch');
-    const ctaLink = el.querySelector('a[routerLink="/map"]') ?? el.querySelector('a[ng-reflect-router-link="/map"]');
-    // RouterLink is compiled, so check the anchor exists with the right text or href after compilation
-    const links = Array.from(el.querySelectorAll('a'));
-    expect(links.some(l => l.textContent?.includes('Map') || l.getAttribute('href') === '/map')).toBe(true);
+    const nav = el.querySelector('nav');
+    expect(nav).toBeTruthy();
+    expect(nav!.textContent).toContain('GasWatch');
+    const ctaLink = nav!.querySelector('a[href="/map"]') ?? nav!.querySelector('a[ng-reflect-router-link="/map"]');
+    expect(ctaLink).toBeTruthy();
   });
 
   it('should render footer', async () => {
