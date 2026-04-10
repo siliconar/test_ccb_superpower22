@@ -1,5 +1,5 @@
 {
-  "session_id": "ai-1775709633-3384",
+  "session_id": "ai-1775791358-2098",
   "ccb_project_id": "5df24a7fb36fe9045e7a493e1603b35943ced31cef4f06db7f8ce2c779dd0eec",
   "work_dir": "/home/riona/code/test_ccb_superpower22",
   "work_dir_norm": "/home/riona/code/test_ccb_superpower22",
@@ -7,8 +7,13 @@
   "terminal": "tmux",
   "active": true,
   "started_at": "2026-04-08 00:12:54",
-  "updated_at": "2026-04-09 12:40:33",
+  "updated_at": "2026-04-10 11:22:38",
   "pane_id": "%1",
   "pane_title_marker": "CCB-Claude-5df24a7f",
-  "ended_at": "2026-04-09 10:35:17"
+  "ended_at": "2026-04-10 00:58:45",
+  "claude_session_path": "/home/riona/.claude/projects/-home-riona-code-test-ccb-superpower22/dca50cf3-683d-411d-a145-61c2aefb12ce.jsonl",
+  "claude_session_id": "dca50cf3-683d-411d-a145-61c2aefb12ce",
+  "old_claude_session_id": "887e5e95-3e3a-47bb-9172-a7b08244871d",
+  "old_claude_session_path": "/home/riona/.claude/projects/-home-riona-code-test-ccb-superpower22/887e5e95-3e3a-47bb-9172-a7b08244871d.jsonl",
+  "old_updated_at": "2026-04-09 17:30:42"
 }

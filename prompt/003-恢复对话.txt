@@ -1,3 +1,20 @@
  "继续 GasWatch 项目。设计文档在
     docs/superpowers/specs/2026-04-08-gaswatch-design.md，CLAUDE.md
     规范在根目录。当前状态：设计已完成，需要写实现计划然后委派 Gemini 实现前端。
+
+
+     下次开机后：
+
+  1. 打开终端，进入项目目录：
+  cd ~/code/test_ccb_superpower22
+  2. 启动新的 Claude Code 会话，直接说：
+  ▎ "继续 GasWatch 项目，做前后端集成测试"
+
+  2. Claude 会自动从记忆中读取当前状态，知道从哪里接着做。
+
+  ---
+  如果想手动确认记忆加载了，可以说：
+
+  ▎ "回顾一下 GasWatch 项目的当前状态"
+
+  然后就可以继续工作了。祝休息好！
