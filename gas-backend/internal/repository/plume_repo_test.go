@@ -29,7 +29,7 @@ func samplePlume() model.Plume {
 		OverpassTime: "2023-03-19T20:05:43",
 		Longitude:    -103.585,
 		Latitude:     31.299,
-		Geometry:     `{"type":"Polygon","coordinates":[[[0,0]]]}`,
+		Geometry:     []byte(`{"type":"Polygon","coordinates":[[[0,0]]]}`),
 		TiffPath:     "data/rawdata/A0000092/A0000092_PLUME.tif",
 	}
 }

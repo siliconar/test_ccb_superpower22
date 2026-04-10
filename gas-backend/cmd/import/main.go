@@ -122,7 +122,7 @@ func importDir(dir string, repo *repository.PlumeRepo) error {
 		FeedbackGovernment:        str(props["Feedback Government"]),
 		AdditionalInformation:     str(props["Additional Information"]),
 		SharedOrganization:        str(props["Shared Organization"]),
-		Geometry:                  string(geomBytes),
+		Geometry:                  geomBytes,
 		TiffPath:                  tifPath,
 	}
 

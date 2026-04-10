@@ -31,7 +31,7 @@ func (r *PlumeRepo) Insert(p model.Plume) error {
 		p.FluxRate, p.FluxRateStd, p.WindU, p.WindV, p.WindSpeed,
 		p.DetectionInstitution, p.QuantificationInstitution,
 		p.FeedbackOperator, p.FeedbackGovernment, p.AdditionalInformation,
-		p.SharedOrganization, p.Geometry, p.TiffPath,
+		p.SharedOrganization, string(p.Geometry), p.TiffPath,
 	)
 	return err
 }
@@ -132,32 +132,36 @@ type scanner interface {
 
 func scanPlume(s scanner) (*model.Plume, error) {
 	var p model.Plume
+	var geometry string
 	err := s.Scan(
 		&p.ID, &p.Satellite, &p.Payload, &p.ProductLevel, &p.OverpassTime,
 		&p.Longitude, &p.Latitude, &p.Country, &p.Sector, &p.GasType,
 		&p.FluxRate, &p.FluxRateStd, &p.WindU, &p.WindV, &p.WindSpeed,
 		&p.DetectionInstitution, &p.QuantificationInstitution,
 		&p.FeedbackOperator, &p.FeedbackGovernment, &p.AdditionalInformation,
-		&p.SharedOrganization, &p.Geometry, &p.TiffPath,
+		&p.SharedOrganization, &geometry, &p.TiffPath,
 	)
 	if err != nil {
 		return nil, err
 	}
+	p.Geometry = []byte(geometry)
 	return &p, nil
 }
 
 func scanPlumeRow(rows *sql.Rows) (*model.Plume, error) {
 	var p model.Plume
+	var geometry string
 	err := rows.Scan(
 		&p.ID, &p.Satellite, &p.Payload, &p.ProductLevel, &p.OverpassTime,
 		&p.Longitude, &p.Latitude, &p.Country, &p.Sector, &p.GasType,
 		&p.FluxRate, &p.FluxRateStd, &p.WindU, &p.WindV, &p.WindSpeed,
 		&p.DetectionInstitution, &p.QuantificationInstitution,
 		&p.FeedbackOperator, &p.FeedbackGovernment, &p.AdditionalInformation,
-		&p.SharedOrganization, &p.Geometry, &p.TiffPath,
+		&p.SharedOrganization, &geometry, &p.TiffPath,
 	)
 	if err != nil {
 		return nil, err
 	}
+	p.Geometry = []byte(geometry)
 	return &p, nil
 }

@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { FilterCriteria, Plume, Stats } from '../models/plume.model';
 import { PlumeService } from './plume.service';
 import { environment } from '../../../environments/environment';
@@ -21,7 +21,9 @@ export class ApiPlumeService extends PlumeService {
       params = params.set('fluxMin', filter.fluxRateRange.min);
       params = params.set('fluxMax', filter.fluxRateRange.max);
     }
-    return this.http.get<Plume[]>(`${this.base}/api/plumes`, { params });
+    return this.http.get<{ data: Plume[]; total: number }>(`${this.base}/api/plumes`, { params }).pipe(
+      map(res => res.data)
+    );
   }
 
   getPlumeById(id: string): Observable<Plume> {

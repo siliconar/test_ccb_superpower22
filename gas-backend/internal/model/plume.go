@@ -1,6 +1,8 @@
 // gas-backend/internal/model/plume.go
 package model
 
+import "encoding/json"
+
 type Plume struct {
 	ID                        string  `json:"id"`
 	Satellite                 string  `json:"satellite"`
@@ -23,8 +25,9 @@ type Plume struct {
 	FeedbackGovernment        string  `json:"feedbackGovernment"`
 	AdditionalInformation     string  `json:"additionalInformation"`
 	SharedOrganization        string  `json:"sharedOrganization"`
-	Geometry                  string  `json:"geometry"`
-	TiffPath                  string  `json:"tiffPath"`
+	Geometry                  json.RawMessage `json:"geometry"`
+	TiffPath                  string          `json:"-"`
+	TiffURL                   string          `json:"tiffUrl"`
 }
 
 type Stats struct {

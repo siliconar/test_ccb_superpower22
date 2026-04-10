@@ -11,6 +11,10 @@ import (
 	"gaswatch/backend/internal/repository"
 )
 
+func plumeTiffURL(id string) string {
+	return "/api/plumes/" + id + "/tiff"
+}
+
 func Register(r *gin.Engine, repo *repository.PlumeRepo) {
 	api := r.Group("/api")
 	api.GET("/plumes", listPlumes(repo))
@@ -50,6 +54,9 @@ func listPlumes(repo *repository.PlumeRepo) gin.HandlerFunc {
 		if plumes == nil {
 			plumes = []model.Plume{}
 		}
+		for i := range plumes {
+			plumes[i].TiffURL = plumeTiffURL(plumes[i].ID)
+		}
 		c.JSON(http.StatusOK, gin.H{"data": plumes, "total": total})
 	}
 }
@@ -65,6 +72,7 @@ func getPlume(repo *repository.PlumeRepo) gin.HandlerFunc {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
+		p.TiffURL = plumeTiffURL(p.ID)
 		c.JSON(http.StatusOK, p)
 	}
 }

@@ -41,7 +41,7 @@ func insertSample(t *testing.T, repo *repository.PlumeRepo) {
 		OverpassTime: "2023-03-19T20:05:43",
 		Longitude:    -103.585,
 		Latitude:     31.299,
-		Geometry:     `{"type":"Polygon","coordinates":[]}`,
+		Geometry:     []byte(`{"type":"Polygon","coordinates":[]}`),
 		TiffPath:     "testdata/test.tif",
 	})
 	if err != nil {
@@ -65,6 +65,17 @@ func TestGetPlumes(t *testing.T) {
 	if resp["total"].(float64) != 1 {
 		t.Errorf("expected total 1, got %v", resp["total"])
 	}
+	data := resp["data"].([]any)
+	first := data[0].(map[string]any)
+	if _, ok := first["tiffPath"]; ok {
+		t.Errorf("did not expect tiffPath in response")
+	}
+	if first["tiffUrl"] != "/api/plumes/A0000092/tiff" {
+		t.Errorf("expected tiffUrl /api/plumes/A0000092/tiff, got %v", first["tiffUrl"])
+	}
+	if _, ok := first["geometry"].(map[string]any); !ok {
+		t.Errorf("expected geometry to be object, got %T", first["geometry"])
+	}
 }
 
 func TestGetPlumeByID(t *testing.T) {
@@ -82,6 +93,15 @@ func TestGetPlumeByID(t *testing.T) {
 	json.Unmarshal(w.Body.Bytes(), &p)
 	if p.ID != "A0000092" {
 		t.Errorf("expected ID A0000092, got %s", p.ID)
+	}
+	if p.TiffURL != "/api/plumes/A0000092/tiff" {
+		t.Errorf("expected tiffUrl /api/plumes/A0000092/tiff, got %s", p.TiffURL)
+	}
+
+	var raw map[string]any
+	json.Unmarshal(w.Body.Bytes(), &raw)
+	if _, ok := raw["tiffPath"]; ok {
+		t.Errorf("did not expect tiffPath in response")
 	}
 }
 
